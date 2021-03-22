@@ -1,0 +1,13 @@
+ribbon:
+  eureka:
+    enable: false
+example:
+  ribbon:
+    listOfWeightServer:
+      - http://www.baidu.com,3
+      - http://www.baidu33443.com,4
+      - http://www.baidu444.com,1
+    NFLoadBalancerPingClassName: pro.fftime.ribbon.lb.config.ServerPingConfig
+    NFLoadBalancerPingInterval: 2
+    NFLoadBalancerRuleClassName: pro.fftime.ribbon.lb.config.WeightLoadBalanceRuleConfig
+    NIWSServerListClassName: pro.fftime.ribbon.lb.config.WeightServerListConfig
