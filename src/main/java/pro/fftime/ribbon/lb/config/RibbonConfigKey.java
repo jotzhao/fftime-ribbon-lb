@@ -20,6 +20,7 @@ import com.netflix.client.config.CommonClientConfigKey;
 import com.netflix.client.config.IClientConfigKey;
 
 import java.util.List;
+import java.util.Map;
 
 public class RibbonConfigKey {
 
@@ -38,14 +39,12 @@ public class RibbonConfigKey {
     };
 
     /**
-     * 两次ping的间隔时间
-     */
-    public static final IClientConfigKey<Integer> pingTimeSpan = new CommonClientConfigKey<Integer>("ping-time-span") {
-    };
-
-    /**
      * 一次周琪内连续ping的次数
      */
     public static final IClientConfigKey<Integer> pingTimes = new CommonClientConfigKey<Integer>("ping-times") {
+    };
+
+    public static final IClientConfigKey<Map<String,Integer>> ipAliveCount = new CommonClientConfigKey<Map<String,Integer>>("aaaaaa"){
+
     };
 }

@@ -24,6 +24,8 @@ import org.slf4j.LoggerFactory;
 
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ServerPingConfig extends AbstractLoadBalancerPing {
 
@@ -34,31 +36,30 @@ public class ServerPingConfig extends AbstractLoadBalancerPing {
     @Override
     public boolean isAlive(final Server server) {
 
-        Integer pingTimeSpan = this.clientConfig.get(RibbonConfigKey.pingTimeSpan);
-        if (pingTimeSpan==null){
-            pingTimeSpan = 1000;
+        Map<String,Integer> ipAliveMapCount =clientConfig.get(RibbonConfigKey.ipAliveCount);
+
+        if (ipAliveMapCount==null){
+            ipAliveMapCount = new HashMap<>();
         }
+
+        int failedCount = ipAliveMapCount.getOrDefault(server.getHostPort(),0);
+
 
         Integer pingTimes = this.clientConfig.get(RibbonConfigKey.pingTimes);
         if (pingTimes==null){
             pingTimes = 3;
         }
 
-        boolean isServerDead = true;
+        final boolean pingResult = this.isServerDead(server);
 
-        while(pingTimes>0){
-            final boolean pingResult = this.isServerDead(server);
-            isServerDead = pingResult && isServerDead;
-            try {
-                Thread.sleep(pingTimeSpan);
-            } catch (final InterruptedException e) {
-                logger.error("ping sleep interupted");
-                break;
-            }
-            pingTimes --;
+        if (pingResult){
+            failedCount = 0;
+        } else {
+            failedCount++;
         }
-
-        return !isServerDead;
+        ipAliveMapCount.put(server.getHostPort(),failedCount);
+        clientConfig.set(RibbonConfigKey.ipAliveCount,ipAliveMapCount);
+        return (failedCount>=pingTimes);
     }
 
     private boolean isServerDead(final Server server){

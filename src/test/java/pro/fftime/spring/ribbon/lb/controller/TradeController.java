@@ -38,9 +38,6 @@ public class TradeController {
     @Autowired
     private LoadBalancerClient client;
 
-    @Autowired
-    private SpringClientFactory clientFactory;
-
 
     @RequestMapping("/lb")
     @ResponseBody
