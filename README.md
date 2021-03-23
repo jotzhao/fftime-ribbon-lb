@@ -1,5 +1,6 @@
 # fftime-ribbon-lb
-[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)  
+[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html) 
+[![GitHub release](https://img.shields.io/github/v/release/jotzhao/fftime-ribbon-lb.svg)](https://github.com/jotzhao/fftime-ribbon-lb/releases)
 
 fftime-ribbon-lb是Spring Cloud Ribbon插件，提供了按照权重的负载均衡的功能。 
 ## 配置
