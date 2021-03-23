@@ -64,17 +64,6 @@ public class SpringRibbonLbExampleApplicationTests {
         Assert.assertEquals("www.baidu.com",response.getBody());
     }
 
-    @Test
-    public void test3(){
-        try {
-            Thread.sleep(100000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        ResponseEntity<String> response = this.restTemplate.getForEntity(
-                this.base.toString() + "/example/lb", String.class, "");
-        Assert.assertEquals("www.baidu.com",response.getBody());
-    }
 
 }
 
