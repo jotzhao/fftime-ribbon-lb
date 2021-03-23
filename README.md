@@ -1,4 +1,5 @@
 # fftime-ribbon-lb
+[![Build Status](https://img.shields.io/github/workflow/status/jotzhao/fftime-ribbon-lb/CI)](https://github.com/jotzhao/fftime-ribbon-lb/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html) 
 [![GitHub release](https://img.shields.io/github/v/release/jotzhao/fftime-ribbon-lb.svg)](https://github.com/jotzhao/fftime-ribbon-lb/releases)
 
